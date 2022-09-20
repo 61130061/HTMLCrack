@@ -1,5 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import ReactFlow, { useNodesState, useEdgesState, addEdge, ConnectionLineType } from 'react-flow-renderer';
+import ReactFlow, { 
+   useNodesState, 
+   useEdgesState, 
+   addEdge, 
+   ConnectionLineType, 
+   Controls
+} from 'react-flow-renderer';
 import Editor from "@monaco-editor/react";
 
 import { demo, demo2, initialNodes, initialEdges } from './utils/example';
@@ -18,6 +24,12 @@ const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(
    demoEdges,
    'LR'
 );
+
+const editorOption = {
+   minimap: {
+      enabled: false
+   }
+}
 
 
 function App() {
@@ -40,14 +52,14 @@ function App() {
    }
 
    const onEditorChange = (value) => {
-      updateFlow();
+      //updateFlow();
    }
    
    return (
       <div className="bg-slate-800 h-screen text-white p-2">
          <div onClick={updateFlow} className="text-3xl font-bold">HTML Crack</div>
          <div className="flex h-[95%] relative">
-            <div className="flex-1 h-full">
+            <div className="w-[40%] h-full">
                <Editor
                   height="100%"
                   defaultLanguage="html"
@@ -55,6 +67,7 @@ function App() {
                   onMount={onEditorMount}
                   onChange={onEditorChange}
                   theme="vs-dark"
+                  options={editorOption}
                />
             </div>
             <div className="flex-1 h-full bg-yello-200">
@@ -64,7 +77,9 @@ function App() {
                   connectionLineType={ConnectionLineType.SmoothStep}
                   nodeTypes={{ testNode: TestNode }}
                   fitView
-               />
+               >
+                  <Controls />
+               </ReactFlow>
             </div>
          </div>
       </div>
