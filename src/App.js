@@ -1,45 +1,10 @@
 import React, { useState, useCallback } from 'react';
 import ReactFlow, { useNodesState, useEdgesState, addEdge, ConnectionLineType } from 'react-flow-renderer';
-import dagre from 'dagre';
 
 import { demo, demo2, initialNodes, initialEdges } from './utils/example';
 import cracker from './utils/parser';
 import { TestNode } from './components/CustomNodes';
-
-const dagreGraph = new dagre.graphlib.Graph();
-dagreGraph.setDefaultEdgeLabel(() => ({}));
-
-const nodeWidth = 300;
-const nodeHeight = 80
-
-const getLayoutedElements = (nodes, edges, direction = 'TB') => {
-   const isHorizontal = direction === 'LR';
-   dagreGraph.setGraph({ rankdir: direction });
-
-   nodes.forEach((node) => {
-      dagreGraph.setNode(node.id, { width: nodeWidth, height: nodeHeight });
-   });
-
-   edges.forEach((edge) => {
-      dagreGraph.setEdge(edge.source, edge.target);
-   });
-
-   dagre.layout(dagreGraph);
-
-   nodes.forEach((node) => {
-      const nodeWithPosition = dagreGraph.node(node.id);
-      node.targetPosition = isHorizontal ? 'left' : 'top';
-      node.sourcePosition = isHorizontal ? 'right' : 'bottom';
-      node.position = {
-         x: nodeWithPosition.x - nodeWidth / 2,
-         y: nodeWithPosition.y - nodeHeight / 2,
-      };
-
-      return node;
-   });
-
-   return { nodes, edges };
-};
+import getLayoutedElements from './utils/dagre';
 
 let demoNodes = [];
 let demoEdges = [];
@@ -71,7 +36,6 @@ function App() {
             edges={edges}
             connectionLineType={ConnectionLineType.SmoothStep}
             nodeTypes={{ testNode: TestNode }}
-            fitView
          />
       </div>
    );

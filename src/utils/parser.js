@@ -22,7 +22,7 @@ Edge []
 
 const position = { x: 0, y: 0 }
 
-function parse(nodes, edges, child, parent = null) {
+function parseTagOnly(nodes, edges, child, parent = null) {
    let id = 0;
    const isExist = nodes.find(e => {
       if (e.data.label === child[1].nodeName) id+=1;
@@ -35,6 +35,8 @@ function parse(nodes, edges, child, parent = null) {
       type: 'testNode',
       data: {
          label: child[1].nodeName,
+         isTarget: parent !== null,
+         isSource: true,
       },
       position
    });
@@ -49,15 +51,21 @@ function parse(nodes, edges, child, parent = null) {
    }
 
    Object.entries(child[1].children).forEach(baby => {
-      parse(nodes, edges, baby, nodeId);
+      parseTagOnly(nodes, edges, baby, nodeId);
    });
 }
+
+
+function parseAll(nodes, edges, child, parent = null) {
+
+}
+
 
 function cracker(nodes, edges, html) {
    const dom = new DOMParser().parseFromString(html, 'text/html');
 
    Object.entries(dom.children).forEach(child => {
-      parse(nodes, edges, child);
+      parseTagOnly(nodes, edges, child);
    });
 }
 
