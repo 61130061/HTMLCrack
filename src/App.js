@@ -16,7 +16,7 @@ import getLayoutedElements from './utils/dagre';
 let demoNodes = [];
 let demoEdges = [];
 
-cracker(demoNodes, demoEdges, demo);
+cracker(demoNodes, demoEdges, false, demo);
 
 // generate layout nodes and edges
 const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(
@@ -41,14 +41,19 @@ function App() {
 
    const editorRef = useRef(null);
 
-   const updateFlow = () => {
+   const updateFlow = (isVertical = vertical) => {
       let newNodes = [], newEdges = [];
-      const direction = vertical ? 'TB' : 'LR';
-      cracker(newNodes, newEdges, editorRef.current.getValue());
+      const direction = isVertical ? 'TB' : 'LR';
+      cracker(newNodes, newEdges, isVertical, editorRef.current.getValue());
       const { nodes: readyNodes, edges: readyEdges } = getLayoutedElements(newNodes, newEdges, direction);
 
       setNodes(readyNodes);
       setEdges(readyEdges);
+   }
+
+   const switchVertical = () => {
+      setVertical(!vertical);
+      updateFlow(!vertical);
    }
 
    const onEditorMount = (editor) => {
@@ -79,11 +84,21 @@ function App() {
                   <input 
                      id="vertical" 
                      type="checkbox" 
+                     checked={vertical}
+                     className="hover:cursor-pointer"
+                     onChange={switchVertical}
+                  />
+                  <label htmlFor="vertical" className="hover:cursor-pointer">vertical</label>
+               </div>
+               <div className="flex gap-2 items-center">
+                  <input 
+                     id="auto-compile" 
+                     type="checkbox" 
                      checked={rtu}
                      className="hover:cursor-pointer"
                      onChange={() => setRtu(!rtu)}
                   />
-                  <label for="vertical" className="hover:cursor-pointer">auto compile</label>
+                  <label htmlFor="auto-compile" className="hover:cursor-pointer">auto compile</label>
                </div>
                <div onClick={updateFlow} className="py-1 px-2 bg-white text-black rounded hover:underline hover:cursor-pointer">
                   compile

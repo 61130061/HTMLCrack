@@ -7,13 +7,15 @@ export const TestNode = memo(({ data, isConnectable }) => {
    }
 
    return (
-      <div onClick={check} className="p-5 text-center bg-white rounded min-w-[200px]">
+      <div onClick={check} className="p-2 bg-white text-xl text-blue-500 rounded-lg w-[200px]">
          {data.isSource &&
-         <Handle type="source" position={Position.Right} />
+         <Handle type="source" position={data.isVertical ? Position.Bottom : Position.Right} />
          }
-         <div className="text-xl hover:font-bold text-blue-500">{data.label}</div>
+         <div>
+            <div className="text-center hover:font-bold">{data.label}</div>
+         </div>
          {data.isTarget &&
-         <Handle type="target" position={Position.Left} />
+         <Handle type="target" position={data.isVertical ? Position.Top : Position.Left} />
          }
       </div>
    );
