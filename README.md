@@ -13,10 +13,10 @@ Please visit and checkout the website [HERE](https://61130061.github.io/HTMLCrac
 ## Feature
 - [x] Convert HTML to visual node-based UI flow chart
 - [x] Auto compile (BETA)
+- [x] Chart direction option (Horizontal/Vertical)
 
 coming soon...
 
-- [ ] Chart direction option (Horizontal/Vertical)
 - [ ] Hide nodes
 - [ ] More detail in nodes (class, id, attributes)
 - [ ] Resizable windows
