@@ -56,11 +56,6 @@ function parseTagOnly(nodes, edges, child, parent = null) {
 }
 
 
-function parseAll(nodes, edges, child, parent = null) {
-
-}
-
-
 function cracker(nodes, edges, html) {
    const dom = new DOMParser().parseFromString(html, 'text/html');
 

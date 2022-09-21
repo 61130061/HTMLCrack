@@ -7,6 +7,7 @@ This project could be used to develop the new way of learning writing HTML code 
 
 ## Feature
 - [x] Convert HTML to visual node-based UI flow chart
+- [x] Auto compile (BETA)
 
 coming soon...
 
