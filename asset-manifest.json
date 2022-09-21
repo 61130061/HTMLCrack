@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/HTMLCrack/static/css/main.13c6e2b3.css",
+    "main.js": "/HTMLCrack/static/js/main.ffab8222.js",
+    "index.html": "/HTMLCrack/index.html",
+    "main.13c6e2b3.css.map": "/HTMLCrack/static/css/main.13c6e2b3.css.map",
+    "main.ffab8222.js.map": "/HTMLCrack/static/js/main.ffab8222.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.13c6e2b3.css",
+    "static/js/main.ffab8222.js"
+  ]
+}
