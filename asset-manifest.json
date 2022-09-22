@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/HTMLCrack/static/css/main.a08af670.css",
-    "main.js": "/HTMLCrack/static/js/main.bc216e69.js",
+    "main.js": "/HTMLCrack/static/js/main.f1abdfbb.js",
     "index.html": "/HTMLCrack/index.html",
     "main.a08af670.css.map": "/HTMLCrack/static/css/main.a08af670.css.map",
-    "main.bc216e69.js.map": "/HTMLCrack/static/js/main.bc216e69.js.map"
+    "main.f1abdfbb.js.map": "/HTMLCrack/static/js/main.f1abdfbb.js.map"
   },
   "entrypoints": [
     "static/css/main.a08af670.css",
-    "static/js/main.bc216e69.js"
+    "static/js/main.f1abdfbb.js"
   ]
 }
