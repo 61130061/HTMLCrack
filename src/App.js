@@ -100,7 +100,7 @@ function App() {
                   />
                   <label htmlFor="auto-compile" className="hover:cursor-pointer">auto compile</label>
                </div>
-               <div onClick={updateFlow} className="py-1 px-2 bg-white text-black rounded hover:underline hover:cursor-pointer">
+               <div onClick={() => updateFlow(vertical)} className="py-1 px-2 bg-white text-black rounded hover:underline hover:cursor-pointer">
                   compile
                </div>
             </div>
